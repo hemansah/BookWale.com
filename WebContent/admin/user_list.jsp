@@ -48,7 +48,7 @@
 								<td>${user.email}</td>
 								<td>${user.fullName}</td>
 								<td>
-									<a href="#"><button class="btn btn-outline-info">Edit</button></a>
+									<a href="edit_user?id=${user.userId}"><button class="btn btn-outline-info">Edit</button></a>
 									<a href="#"><button class="btn btn-outline-danger">Delete</button></a>
 								</td>
 							</tr>

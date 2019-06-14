@@ -17,12 +17,18 @@ public class Users {
 	public Users() {
 		
 	}
+	public Users(Integer userId,String email, String fullName, String password) {
+		this(email,fullName, password);
+		this.userId = userId;
+	}
+	
 	public Users(String email, String fullName, String password) {
 		super();
 		this.email = email;
 		this.fullName = fullName;
 		this.password = password;
 	}
+	
 	@Column(name = "user_id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

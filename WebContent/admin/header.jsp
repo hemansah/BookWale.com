@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-faded">
 	<!-- <a href="/" class="navbar-brand"><span class="title-size-header">Bookwale</span></a> -->
-	<a class="navbar-brand"><p class="title-size-header my-0 ">Bookwale</p></a>
+	<a class="navbar-brand"><p class="title-size-header my-0 "><b>Bookwale</b></p></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbar5">
 		<span class="navbar-toggler-icon"></span>
