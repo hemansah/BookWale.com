@@ -16,19 +16,18 @@ import com.bookwale.entity.Users;
 
 public class UserServices {
 	private UserDAO userDAO;
-	private EntityManagerFactory entityManagerFactory;
-	private EntityManager entityManager;
+	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
+
+	private EntityManager entityManager;
 	
 	
 	
-	public  UserServices(HttpServletRequest request, HttpServletResponse response) {
+	public  UserServices(EntityManager entityManager,HttpServletRequest request, HttpServletResponse response) {
+		this.entityManager = entityManager;
 		this.request = request;
 		this.response = response;
-		
-		entityManagerFactory = Persistence.createEntityManagerFactory("bookwale");
-		entityManager  = entityManagerFactory.createEntityManager(); 
 		userDAO  = new UserDAO(entityManager);
 		
 	}
@@ -105,5 +104,13 @@ public class UserServices {
 		userDAO.update(user);
 		String message = "User has been updated successfully";
 		listUser(message);
+	}
+
+	public void deleteUser() throws ServletException, IOException {
+		int userId = Integer.parseInt(request.getParameter("id"));
+		userDAO.delete(userId);
+		String message = "User has been deleted successfully ";
+		listUser(message);
+		
 	}
 } 

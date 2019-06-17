@@ -22,7 +22,7 @@
 			<div class="col-12 my-5">
 				<div align="center">
 				
-					<h3 class="">
+					<h3>
 						<c:if test="${user != null}">
 							Edit User
 						</c:if>

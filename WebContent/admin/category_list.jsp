@@ -5,10 +5,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Manage Users - Bookwale Administration</title>
+<title>Manage Categories - Bookwale Administration</title>
 <jsp:directive.include file="links.jsp" />
 <jsp:directive.include file="scripts.jsp" />
-
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -16,7 +15,7 @@
 	
 		<div class="row">
 			<div class="col-12 my-2" align="center">
-				<a href="user_form.jsp"><button class="btn btn-secondary">Create New User</button></a>
+				<a href="category_form.jsp"><button class="btn btn-secondary">Create New Category</button></a>
 			</div>
 		</div>
 		
@@ -35,20 +34,18 @@
 					<thead class="text-center">
 						<th>Index</th>
 						<th>ID</th>
-						<th>Email</th>
-						<th>Full Name</th>
+						<th>Name</th>
 						<th>Actions</th>
 					</thead>
 					
 					<tbody class="text-center">
-						<c:forEach var="user" items="${listUsers}" varStatus="status">
+						<c:forEach var="cat" items="${listCategory}" varStatus="status">
 							<tr>
 								<td>${status.index + 1}</td>
-								<td>${user.userId}</td>
-								<td>${user.email}</td>
-								<td>${user.fullName}</td>
+								<td>${cat.categoryId}</td>
+								<td>${cat.name}</td>
 								<td>
-									<a href="edit_user?id=${user.userId}"><button class="btn btn-outline-info">Edit</button></a>
+									<a href="edit_category?id=${user.userId}"><button class="btn btn-outline-info">Edit</button></a>
 									<a href="javascript:confirmDelete(${user.userId })"><button class="btn btn-outline-danger">Delete</button></a>
 								</td>
 							</tr>

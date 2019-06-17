@@ -1,4 +1,4 @@
-package com.bookwale.controller.admin;
+package com.bookwale.controller.admin.user;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,21 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bookwale.controller.admin.BaseServlet;
 import com.bookwale.service.UserServices;
 
-@WebServlet("/admin/update_user")
-public class UpdateUserServlet extends HttpServlet {
+
+@WebServlet("/admin/edit_user")
+public class EditUserServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 
-	public UpdateUserServlet() {
+	public EditUserServlet() {
 		super();
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		UserServices userServices = new UserServices(request, response);
-		userServices.updateUser();
+		
+		UserServices userServices = new UserServices(entityManager,request, response);
+		userServices.editUser();
 	}
 
 }
