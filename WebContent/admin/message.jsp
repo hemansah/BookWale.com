@@ -14,7 +14,7 @@
 	<div class="container-fluid">
 		<div class="row my-5">
 			<div class="col-12">
-				<h3 class="text-danger text-center">${message}</h3>
+				<h3 class="text-danger bg-light text-center">${message}</h3>
 			</div>
 		</div> 
 	</div>	

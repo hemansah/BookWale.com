@@ -22,7 +22,7 @@
 		<c:if test="${message!=null}">
 		<div class="row">
 			<div class="col-12 my-2" align="center">
-				<h3>${message}</h3>
+				<h3 class="text-success bg-light">${message}</h3>
 			</div>
 		</div>
 		</c:if>
@@ -45,8 +45,8 @@
 								<td>${cat.categoryId}</td>
 								<td>${cat.name}</td>
 								<td>
-									<a href="edit_category?id=${user.userId}"><button class="btn btn-outline-info">Edit</button></a>
-									<a href="javascript:confirmDelete(${user.userId })"><button class="btn btn-outline-danger">Delete</button></a>
+									<a href="edit_category?id=${category.categoryId}"><button class="btn btn-outline-info">Edit</button></a>
+									<a href="javascript:confirmDelete(${category.categoryId })"><button class="btn btn-outline-danger">Delete</button></a>
 								</td>
 							</tr>
 						</c:forEach>

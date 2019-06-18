@@ -23,7 +23,7 @@
 		<c:if test="${message!=null}">
 		<div class="row">
 			<div class="col-12 my-2" align="center">
-				<h3>${message}</h3>
+				<h3 class="text-success bg-light">${message}</h3>
 			</div>
 		</div>
 		</c:if>

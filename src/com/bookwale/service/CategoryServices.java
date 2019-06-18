@@ -59,10 +59,22 @@ public class CategoryServices {
 			requestDispatcher.forward(request, response);
 		} else {
 			Category newCategory = new Category();
+			newCategory.setName(name);
 			categoryDAO.create(newCategory);
 			String message = "New category created successfully.";
 			listCategory(message);
 		}
+	}
+	
+	public void editCategory() throws ServletException, IOException {
+		int categoryId = Integer.parseInt(request.getParameter("id"));
+		Category category = categoryDAO.get(categoryId);
+		
+		request.setAttribute("category",category);
+		String editPage = "category_form.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);
+		
 	}
 
 }
