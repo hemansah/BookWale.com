@@ -1,4 +1,4 @@
-package com.bookwale.controller.admin;
+package com.bookwale.controller;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 
-@WebServlet("/admin")
+
 public abstract  class BaseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

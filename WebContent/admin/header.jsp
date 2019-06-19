@@ -12,7 +12,7 @@
 			<li class="nav-item active"><a class="nav-link" href="list_users">Users</a></li>
 			<li class="nav-item active"><a class="nav-link" href="list_category">Categories</a></li>
 			<li class="nav-item active"><a class="nav-link" href="#">Books</a></li>
-			<li class="nav-item active"><a class="nav-link" href="#">Cutomers</a></li>
+			<li class="nav-item active"><a class="nav-link" href="#">Customers</a></li>
 			<li class="nav-item active"><a class="nav-link" href="#">Reviews</a></li>
 			<li class="nav-item active"><a class="nav-link" href="#">Orders</a></li>
 		</ul>

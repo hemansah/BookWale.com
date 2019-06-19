@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookwale.controller.admin.BaseServlet;
+import com.bookwale.controller.BaseServlet;
 import com.bookwale.service.UserServices;
 
 

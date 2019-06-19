@@ -41,7 +41,7 @@
 		<div class="row my-3" align="center">
 			<div class="col-sm-12">
 				<c:if test="${category != null }">
-					<form action="update_category" method="post"
+					<form action="edit_category" method="post"
 						onsubmit="return validateFormInput()">
 						<input type="hidden" name="categoryId" value="${category.categoryId }" />
 				</c:if>

@@ -45,8 +45,8 @@
 								<td>${cat.categoryId}</td>
 								<td>${cat.name}</td>
 								<td>
-									<a href="edit_category?id=${category.categoryId}"><button class="btn btn-outline-info">Edit</button></a>
-									<a href="javascript:confirmDelete(${category.categoryId })"><button class="btn btn-outline-danger">Delete</button></a>
+									<a href="edit_category?id=${cat.categoryId}"><button class="btn btn-outline-secondary">Edit</button></a>
+								    <a href="javascript:confirmDelete(${cat.categoryId })"><button class="btn btn-outline-danger">Delete</button></a> 
 								</td>
 							</tr>
 						</c:forEach>
@@ -59,10 +59,10 @@
 	<!-- Container ends here  -->
 </body>
 <script type="text/javascript">
-	function confirmDelete(userId) {
-		if(confirm('Are you sure you want to delete the user with Id: '+userId)){
+	function confirmDelete(categoryId) {
+		if(confirm('Are you sure you want to delete the category with Id: '+categoryId)){
 			
-			window.location = 'delete_user?id=' + userId;
+			window.location = 'delete_category?id=' + categoryId;
 		}
 	}
 </script>
