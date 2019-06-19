@@ -13,6 +13,12 @@
 <body>
 <jsp:directive.include file = "header.jsp"/>
 
+<div class="row">
+			<div class="col-10 my-5 offset-1">
+		
+			</div>
+		</div>
+
 </body>
 <jsp:directive.include file = "footer.jsp"/>
 </html>

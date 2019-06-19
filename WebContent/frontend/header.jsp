@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-expand-md navbar-light bg-faded">
 	<!-- <a href="/" class="navbar-brand"><span class="title-size-header">Bookwale</span></a> -->
-	<a class="navbar-brand"><p class="title-size-header my-0 ">Bookwale</p></a>
+	<a class="navbar-brand"><p class=" my-0 ">Bookwale</p></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbar5">
 		<span class="navbar-toggler-icon"></span>
@@ -14,9 +14,7 @@
 
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<c:forEach var="category" items="${listCategory}">
-						<a href="#">
-						<c:out value="${category.name}"></c:out>
-						</a>
+						 <a class="dropdown-item" href="#"><c:out value="${category.name }"/></a>
 					</c:forEach>
 				</div>
 			</li> 
