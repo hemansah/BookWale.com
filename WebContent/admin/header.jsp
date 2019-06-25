@@ -1,7 +1,12 @@
-
-<nav class="navbar navbar-expand-md navbar-light bg-faded">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<nav class="navbar navbar-expand-md navbar-light bg-faded" id="navbar">
 	<!-- <a href="/" class="navbar-brand"><span class="title-size-header">Bookwale</span></a> -->
-	<a class="navbar-brand"><p class=" my-0 "><b>Bookwale</b></p></a>
+	<a class="navbar-brand">
+		<p class=" my-0 title-header">
+			<img src="../images/book.png" style="height: 35px; width: 35px;"/>
+			Bookwale
+		</p>
+	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbar5">
 		<span class="navbar-toggler-icon"></span>
@@ -11,7 +16,7 @@
 
 			<li class="nav-item active"><a class="nav-link" href="list_users">Users</a></li>
 			<li class="nav-item active"><a class="nav-link" href="list_category">Categories</a></li>
-			<li class="nav-item active"><a class="nav-link" href="#">Books</a></li>
+			<li class="nav-item active"><a class="nav-link" href="list_books">Books</a></li>
 			<li class="nav-item active"><a class="nav-link" href="#">Customers</a></li>
 			<li class="nav-item active"><a class="nav-link" href="#">Reviews</a></li>
 			<li class="nav-item active"><a class="nav-link" href="#">Orders</a></li>
@@ -29,11 +34,11 @@
 		</form>
 		<ul class="navbar-nav">
 
-			<div>Welcome admin |</div>
-			<a href="logout">&nbsp;Logout</a>
+			<div>Welcome,<c:out value="${sessionScope.useremail}"></c:out> |</div>
+			<a href="logout">&nbsp;<button class="btn btn-outline-primary">Logout</button></a>
 		</ul>
 
-		<button class="btn btn-outline-info ml-auto mr-2">Log in</button>
+		<a href="login.jsp"><button class="btn btn-outline-info ml-auto mr-2">Log in</button></a>
 
 		<button class="btn btn-outline-success mr-1">Sign up</button>
 	</div>

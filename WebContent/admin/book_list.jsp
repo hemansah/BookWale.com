@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Manage Users - Bookwale Administration</title>
+<title>Manage Books - Bookwale Administration</title>
 <jsp:directive.include file="links.jsp" />
 <jsp:directive.include file="scripts.jsp" />
 
@@ -16,7 +16,7 @@
 	
 		<div class="row">
 			<div class="col-12 my-2" align="center">
-				<a href="user_form.jsp"><button class="btn btn-secondary">Create New User</button></a>
+				<a href="book_form.jsp"><button class="btn btn-secondary">Add New Book</button></a>
 			</div>
 		</div>
 		
@@ -35,22 +35,35 @@
 					<thead class="text-center">
 						<th>Index</th>
 						<th>ID</th>
-						<th>Email</th>
-						<th>Full Name</th>
+						<th>Image</th>
+						<th>Title</th>
+						<th>Author</th>
+						<th>Category</th>
+						<th>Price</th>
+						<th>Last Updated</th>
 						<th>Actions</th>
+						
 					</thead>
 					
 					<tbody class="text-center">
-						<c:forEach var="user" items="${listUsers}" varStatus="status">
+						<c:forEach var="book" items="${listBooks}" varStatus="status">
 							<tr>
 								<td>${status.index + 1}</td>
-								<td>${user.userId}</td>
-								<td>${user.email}</td>
-								<td>${user.fullName}</td>
+								<td>${book.bookId}</td>
+								
 								<td>
-									<a href="edit_user?id=${user.userId}"><button class="btn btn-outline-info">Edit</button></a>
-									<a href="javascript:void(0);" id="${user.userId }" class="deleteLink"><button class="btn btn-outline-danger">Delete</button></a>
+									<img  src="data:image/jpg;base64,${book.base64Image}"/>
 								</td>
+								
+								<td>${book.title}</td>
+								<td>${book.author}</td>
+								<td>${book.category.name}</td>
+								<td>${book.price}</td>
+								<td>${book.lastUpdateTime}</td>
+								<td>
+									<a href="edit_book?id=${book.bookId}"><button class="btn btn-outline-info">Edit</button></a>
+									<a href="javascript:void(0);" id="${book.bookId}" class="deleteLink"><button class="btn btn-outline-danger">Delete</button></a>
+								</td> 
 							</tr>
 						</c:forEach>
 					</tbody>

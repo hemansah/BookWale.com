@@ -38,11 +38,11 @@
 		<div class="row my-3" align="center" >
 			<div class="col-12" >
 				<c:if test="${user != null }">
-				<form action="update_user" method="post" onsubmit="return validateFormInput()">
+				<form action="update_user" method="post" id="userform">
 				 <input type="hidden" name="userId" value="${user.userId }"/>
 				</c:if>
 				<c:if test="${user == null }">
-				<form action="create_user" method="post" onsubmit="return validateFormInput()">
+				<form action="create_user" method="post" id="userform" >
 				</c:if>
 					<div class="form-group">
 					<input type="text" id="fullname" value="${user.fullName}" name="fullname" class="form-control my-2" placeholder="Enter your Full Name">
@@ -50,38 +50,45 @@
 					<input type="password" id="password" value="${user.password }"name="password" class="form-control my-2" placeholder="Enter your Password">
 					</div>
 					<input value="Save" class="btn btn-primary" type="submit"/>
-					<button type="" class="btn btn-danger" onclick="javascript:history.go(-1);">Cancel</button>
+					<button type="" class="btn btn-danger" id="buttonCancel">Cancel</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </body>
+<jsp:directive.include file = "footer.jsp"/>
 
 <script type="text/javascript">
-		function validateFormInput() {
-			var fieldEmail = document.getElementById("email");
-			var fieldFullName = document.getElementById("fullname");
-			var fieldPassword = document.getElementById("password");
+
+	$(document).ready(function(){
+		$("#userform").validate({
+			rules : {
+				email : {
+					required : true,
+					email : true
+				},
+				fullname : "required",
+				password : "required"	
+			},
 			
-			if(fieldFullName.value.length==0){
-				alert("Fullname is Required");
-				fieldFullName.focus();
-				return false;
+			message : {
+				email : {
+					required : "Please enter an email",
+					email : "Please enter a valid email address"
+				},
+				fullname : "Please enter fullname",
+				<c:if test="${user == null}">
+				
+				password: "Please enter password"
+				</c:if>	
+				
 			}
-			
-			if(fieldEmail.value.length==0){
-				alert("Email is Required");
-				fieldEmail.focus();
-				return false;
-			}
-			
-			if(fieldPassword.value.length==0){
-				alert("Password is Required");
-				fieldPassword.focus();
-				return false;
-			}
-			
-			return true;
-		}
+		});
+		
+		$("#buttonCancel").click(function(){
+			history.go(-1);
+		})
+	});
+
 </script>
 </html>

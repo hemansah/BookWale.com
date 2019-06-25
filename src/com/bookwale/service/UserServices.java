@@ -11,8 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bookwale.dao.HashGenerator;
+
 import com.bookwale.dao.UserDAO;
 import com.bookwale.entity.Users;
+
+import net.bytebuddy.utility.privilege.GetSystemPropertyAction;
 
 public class UserServices {
 	private UserDAO userDAO;
@@ -34,11 +38,12 @@ public class UserServices {
 	
 	public void listUser()
 			throws ServletException, IOException {
-		listUser(null);
+			listUser(null);
 	}
 	
 	
-	public void listUser(String message)throws ServletException, IOException {
+	public void listUser(String message)
+			throws ServletException, IOException {
 		List<Users> listUsers = userDAO.listAll();
 		request.setAttribute("listUsers", listUsers);
 		
@@ -78,7 +83,19 @@ public class UserServices {
 		Users user = userDAO.get(userId);
 		
 		String editPage = "user_form.jsp";
-		request.setAttribute("user", user);
+		
+		if (user == null) {
+			editPage = "message.jsp";
+			String errorMessage = "Could not find user with ID " + userId;
+			request.setAttribute("message", errorMessage);
+		} else {
+			// set password as null to make the password is left blank by default
+			// if left blank, the user's password won't be updated
+			// this is to work with the encrypted password feature
+			user.setPassword(null);
+			request.setAttribute("user", user);			
+		}
+		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
 		requestDispatcher.forward(request, response);
 		
@@ -100,20 +117,67 @@ public class UserServices {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
 			requestDispatcher.forward(request, response);
 		}else {
+			userById.setEmail(email);
+			userById.setFullName(fullName);
 			
+			if (password != null & !password.isEmpty()) {
+				String encryptedPassword = HashGenerator.generateMD5(password);
+				userById.setPassword(encryptedPassword);				
+			}
+			
+			userDAO.update(userById);
+
+			String message = "User has been updated successfully";
+			listUser(message);
+		}
 		}
 		
-		Users user = new Users(userId, email, fullName, password);
-		userDAO.update(user);
-		String message = "User has been updated successfully";
-		listUser(message);
-	}
+
 
 	public void deleteUser() throws ServletException, IOException {
-		int userId = Integer.parseInt(request.getParameter("id"));
-		userDAO.delete(userId);
-		String message = "User has been deleted successfully ";
-		listUser(message);
+int userId = Integer.parseInt(request.getParameter("id"));
 		
+		String message = "User has been deleted successfully";
+		
+		if (userId == 1) {
+			message = "The default admin user account cannot be deleted.";
+			
+			request.setAttribute("message", message);
+			request.getRequestDispatcher("message.jsp").forward(request, response);
+			return;
+		}
+		
+		Users user = userDAO.get(userId);		
+		
+		if (user == null) {
+			message = "Could not find user with ID " + userId
+					+ ", or it might have been deleted by another admin";
+			
+			request.setAttribute("message", message);
+			request.getRequestDispatcher("message.jsp").forward(request, response);			
+		} else {
+			userDAO.delete(userId);
+			listUser(message);
+		}
+		
+	}
+	
+	public void login() throws ServletException, IOException {
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		boolean loginResult = userDAO .checkLogin(email, password);
+		
+		if(loginResult) {
+			request.getSession().setAttribute("useremail",email);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/admin/");
+			requestDispatcher.forward(request, response);
+		}else { 
+			String message = "Login failed!";
+			request.setAttribute("message",message);
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+			requestDispatcher.forward(request, response);
+
+			
+		}
 	}
 } 

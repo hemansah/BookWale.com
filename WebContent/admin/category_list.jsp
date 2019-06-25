@@ -46,7 +46,7 @@
 								<td>${cat.name}</td>
 								<td>
 									<a href="edit_category?id=${cat.categoryId}"><button class="btn btn-outline-secondary">Edit</button></a>
-								    <a href="javascript:confirmDelete(${cat.categoryId })"><button class="btn btn-outline-danger">Delete</button></a> 
+								    <a href="javascript:void(0)" class="deleteLink" id="${cat.categoryId}"><button class="btn btn-outline-danger">Delete</button></a> 
 								</td>
 							</tr>
 						</c:forEach>
@@ -59,12 +59,17 @@
 	<!-- Container ends here  -->
 </body>
 <script type="text/javascript">
-	function confirmDelete(categoryId) {
-		if(confirm('Are you sure you want to delete the category with Id: '+categoryId)){
-			
-			window.location = 'delete_category?id=' + categoryId;
-		}
-	}
+
+$(document).ready(function(){
+	$(".deleteLink").each(function() {
+		$(this).on("click",function(){
+			categoryId = $(this).attr("id");
+			if(confirm('Are you sure you want to delete the category with Id: '+categoryId)){
+				window.location = 'delete_category?id=' + categoryId;
+			}
+		})
+	})
+});
 </script>
 <jsp:directive.include file = "footer.jsp"/>
 </html>

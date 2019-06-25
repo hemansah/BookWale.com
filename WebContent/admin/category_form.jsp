@@ -42,12 +42,12 @@
 			<div class="col-sm-12">
 				<c:if test="${category != null }">
 					<form action="edit_category" method="post"
-						onsubmit="return validateFormInput()">
+						id="categoryform" >
 						<input type="hidden" name="categoryId" value="${category.categoryId }" />
 				</c:if>
 				<c:if test="${category == null }">
 					<form action="create_category" method="post"
-						onsubmit="return validateFormInput()">
+						id="categoryform">
 				</c:if>
 				<div class="form-group">
 					<input type="text" id="name" value="${category.name}"
@@ -56,7 +56,7 @@
 				</div>
 				<input value="Save" class="btn btn-primary" type="submit" />
 				<button type="" class="btn btn-danger"
-					onclick="javascript:history.go(-1);">Cancel</button>
+					id="buttonCancel">Cancel</button>
 				</form>
 			</div>
 		</div>
@@ -68,17 +68,20 @@
 </body>
 
 <script type="text/javascript">
-		function validateFormInput() {
-			var fieldName = document.getElementById("name");
-			
-			
-			if(fieldName.value.length==0){
-				alert("Category name is Required");
-				fieldFullName.focus();
-				return false;
-			}
-			
-			return true;
+$(document).ready(function(){
+	$("#categoryform").validate({
+		rules : {
+			name : "required",
+				
+		},
+		
+		message : {
+			name : "Please enter the category name",				
 		}
+	});
+	$("#buttonCancel").click(function(){
+		history.go(-1);
+	})
+});
 </script>
 </html>

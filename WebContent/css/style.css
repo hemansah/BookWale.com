@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+.title-header {
+	font-size: 25px;
+	font-weight: 500;
+}
+
+#navbar {
+	background-color: #f3f9fb;
+}
+
+
+#navbarDropdown{
+	background-color: #eaf5ff;
+}
+
+.error{
+	color : red;
+	outline-color: red;
+	border-color: red;
+	box-shadow: 2px red;
+}

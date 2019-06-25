@@ -1,7 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<nav class="navbar navbar-expand-md navbar-light bg-faded">
-	<!-- <a href="/" class="navbar-brand"><span class="title-size-header">Bookwale</span></a> -->
-	<a class="navbar-brand"><p class=" my-0 ">Bookwale</p></a>
+<nav class="navbar navbar-expand-md navbar-light bg-faded" id="navbar">
+	<!-- <a href="/" class="navbar-brand"><span id="title-size-header">Bookwale</span></a> -->
+	<a class="navbar-brand">
+		<p class=" my-0 title-header">
+			<img src="images/book.png" style="height: 35px; width: 35px;"/>Bookwale
+		</p>
+	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbar5">
 		<span class="navbar-toggler-icon"></span>
@@ -9,12 +13,12 @@
 	<div class="navbar-collapse collapse" id="navbar5">
 		<ul class="navbar-nav">
 			<li class="nav-item dropdown">
-			  <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+			  <a class="nav-link dropdown-toggle active" href="#"  role="button" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"> Category </a>
 
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<div class="dropdown-menu" id="navbarDropdown" aria-labelledby="navbarDropdown">
 					<c:forEach var="category" items="${listCategory}">
-						 <a class="dropdown-item" href="#"><c:out value="${category.name }"/></a>
+						 <a class="dropdown-item" href="view_category?id=${category.categoryId}"><c:out value="${category.name }"/></a>
 					</c:forEach>
 				</div>
 			</li> 
