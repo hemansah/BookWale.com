@@ -73,25 +73,20 @@ public class BookServices {
 			throw new ServletException("Error parsing publish date (format is mm/dd/yyyy)");
 		}
 		
-		System.out.println("cat : " +categoryId);
-		System.out.println("title : "+title);
-		System.out.println("author : "+author);
-		System.out.println("desc : "+description);
-		System.out.println("isbn : "+isbn);
-		System.out.println("price : "+price);
-		System.out.println("date : "+publishDate);
 		
+		Category category = categoryDAO.get(categoryId);
 		Book newBook = new Book();
 		newBook.setTitle(title);
 		newBook.setAuthor(author);
 		newBook.setDescription(description);
 		newBook.setIsbn(isbn);
 		newBook.setPublishDate(publishDate);
-		Category category = categoryDAO.get(categoryId);
-		
 		newBook.setCategory(category);
 		newBook.setPrice(price);
 		Part part = request.getPart("bookImage");
+	
+		System.out.println("cat : "+category);
+		System.out.println("title: "+title);
 		
 		if(part != null && part.getSize() > 0) {
 			long size  = part.getSize();
@@ -107,7 +102,7 @@ public class BookServices {
 		Book createdBook = 	bookDAO.create(newBook);
 		
 		if(createdBook.getBookId() > 0) {
-			String message = "A new has been created successfully.";
+			String message = "A new book has been created successfully.";
 			request.setAttribute("message", message);
 			listBooks();
 		}

@@ -52,7 +52,7 @@
 								<td>${book.bookId}</td>
 								
 								<td>
-									<img  src="data:image/jpg;base64,${book.base64Image}"/>
+									<img  src="data:image/jpg;base64,${book.base64Image}" style="width: 100px; height: 150px;"/>
 								</td>
 								
 								<td>${book.title}</td>
