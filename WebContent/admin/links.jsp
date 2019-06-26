@@ -8,4 +8,7 @@
 	rel="stylesheet"
 	integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="../css/style.css" />	
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+<link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css" />
+		

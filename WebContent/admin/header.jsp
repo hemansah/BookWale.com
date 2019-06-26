@@ -34,11 +34,11 @@
 		</form>
 		<ul class="navbar-nav">
 
-			<div>Welcome,<c:out value="${sessionScope.useremail}"></c:out> |</div>
+			<div><c:out value="${sessionScope.useremail}"></c:out></div>
 			<a href="logout">&nbsp;<button class="btn btn-outline-primary">Logout</button></a>
 		</ul>
 
-		<a href="login.jsp"><button class="btn btn-outline-info ml-auto mr-2">Log in</button></a>
+		<a href="login.jsp"><button class="btn btn-outline-info ml-auto mr-1">Log in</button></a>
 
 		<button class="btn btn-outline-success mr-1">Sign up</button>
 	</div>

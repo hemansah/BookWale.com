@@ -16,7 +16,7 @@
 	
 		<div class="row">
 			<div class="col-12 my-2" align="center">
-				<a href="book_form.jsp"><button class="btn btn-secondary">Add New Book</button></a>
+				<a href="new_book"><button class="btn btn-secondary">Add New Book</button></a>
 			</div>
 		</div>
 		
