@@ -57,7 +57,7 @@ public class BookServices {
 	}
 
 	public void createBook() throws ServletException, IOException {
-		Integer categoryId  = Integer.parseInt(request.getParameter("category"));
+		int categoryId  = Integer.parseInt(request.getParameter("category"));
 		String title = request.getParameter("title");
 		String author= request.getParameter("author");
 		String description = request.getParameter("description");
@@ -73,20 +73,23 @@ public class BookServices {
 			throw new ServletException("Error parsing publish date (format is mm/dd/yyyy)");
 		}
 		
+		System.out.println("cat : "+categoryId);
+		System.out.println("title: "+title);
 		
-		Category category = categoryDAO.get(categoryId);
+		
 		Book newBook = new Book();
 		newBook.setTitle(title);
 		newBook.setAuthor(author);
 		newBook.setDescription(description);
 		newBook.setIsbn(isbn);
 		newBook.setPublishDate(publishDate);
+		
+		Category category = categoryDAO.get(categoryId);
 		newBook.setCategory(category);
 		newBook.setPrice(price);
 		Part part = request.getPart("bookImage");
 	
-		System.out.println("cat : "+category);
-		System.out.println("title: "+title);
+		
 		
 		if(part != null && part.getSize() > 0) {
 			long size  = part.getSize();

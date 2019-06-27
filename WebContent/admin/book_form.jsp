@@ -39,14 +39,14 @@
 			<div class="col-12">
 				<c:if test="${book != null }">
 					<form action="update_book" method="post" id="userform">
-						<input type="hidden" name="userId" value="${user.userId }" />
+						<input type="hidden" name="categoryId" value="${category.categoryId }" />
 				</c:if>
 				<c:if test="${book == null }">
 					<form action="create_book" method="post" id="bookform" enctype="multipart/form-data">
 				</c:if>
 				<div class="form-group">
 					<select class="form-control" name="category" id="category">
-						<option>Select Category</option>
+						
 						<c:forEach items="${listCategory}" var="category">
 							<option value="${category.categoryId}">
 								${category.name}
