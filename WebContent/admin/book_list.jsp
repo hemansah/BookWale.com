@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col-10 my-5 offset-1">
 				<table class="table ml-auto table-bordered">
-					<thead class="text-center">
+					<thead class="text-center thead-dark">
 						<th>Index</th>
 						<th>ID</th>
 						<th>Image</th>
