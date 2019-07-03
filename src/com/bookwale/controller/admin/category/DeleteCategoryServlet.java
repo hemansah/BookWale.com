@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookwale.controller.BaseServlet;
+
 import com.bookwale.service.CategoryServices;
 
 @WebServlet("/admin/delete_category")
-public class DeleteCategoryServlet extends BaseServlet {
+public class DeleteCategoryServlet extends HttpServlet  {
 	private static final long serialVersionUID = 1L;
        
   
@@ -21,7 +21,7 @@ public class DeleteCategoryServlet extends BaseServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		CategoryServices categoryServices = new CategoryServices(entityManager, request, response);
+		CategoryServices categoryServices = new CategoryServices( request, response);
 		categoryServices.deleteCategory();
 	}
 

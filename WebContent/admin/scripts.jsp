@@ -12,3 +12,5 @@
 <script type="text/javascript" 
 		src="../js/jquery-ui.min.js"></script>		
 				
+<script type="text/javascript" 
+		src="../js/jquery.richtext.min.js"></script>				

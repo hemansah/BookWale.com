@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-expand-md navbar-light bg-faded" id="navbar">
 	<!-- <a href="/" class="navbar-brand"><span id="title-size-header">Bookwale</span></a> -->
-	<a class="navbar-brand">
+	<a class="navbar-brand" href="${pageContext.request.contextPath }/">
 		<p class=" my-0 title-header">
 			<img src="images/book.png" style="height: 35px; width: 35px;"/>Bookwale
 		</p>
@@ -27,12 +27,12 @@
 			<li class="nav-item active"><a class="nav-link" href="#">Link</a></li>
 			<li class="nav-item active"><a class="nav-link" href="#">Link</a></li>
 		</ul>
-		<form class="mx-auto my-auto d-inline w-50">
+		<form action="search" method="get" class="mx-auto my-auto d-inline w-50">
 			<div class="input-group">
-				<input type="text" class="form-control border border-right-0"
+				<input type="text" name="keyword" class="form-control border border-right-0"
 					placeholder="Search..."> <span class="input-group-append">
 					<button class="btn btn-outline-secondary border border-left-0"
-						type="button">
+						type="submit">
 						<i class="fa fa-search"></i>
 					</button>
 				</span>

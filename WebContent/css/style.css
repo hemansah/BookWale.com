@@ -9,14 +9,31 @@
 	background-color: #f3f9fb;
 }
 
-
-#navbarDropdown{
+#navbarDropdown {
 	background-color: #eaf5ff;
 }
 
-.error{
-	color : red;
+.error {
+	color: red;
 	outline-color: red;
 	border-color: red;
 	box-shadow: 2px red;
+}
+
+.card-text {
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+.category-name {
+	font-family: 'Russo One', sans-serif;
+	font-size: 30px;
+}
+
+.new-books {
+	font-family: 'Russo One', sans-serif;
+	font-size: 30px;
+	padding-left: 0px;
+	box-sizing: 100px;
+	text-shadow: 2px 2px 2px #f83a3a;
 }

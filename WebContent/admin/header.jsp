@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="navbar navbar-expand-md navbar-light bg-faded" id="navbar">
 	<!-- <a href="/" class="navbar-brand"><span class="title-size-header">Bookwale</span></a> -->
-	<a class="navbar-brand">
+	<a class="navbar-brand" href="${pageContext.request.contextPath }/admin/" >
 		<p class=" my-0 title-header">
 			<img src="../images/book.png" style="height: 35px; width: 35px;"/>
 			Bookwale
@@ -17,7 +17,7 @@
 			<li class="nav-item active"><a class="nav-link" href="list_users">Users</a></li>
 			<li class="nav-item active"><a class="nav-link" href="list_category">Categories</a></li>
 			<li class="nav-item active"><a class="nav-link" href="list_books">Books</a></li>
-			<li class="nav-item active"><a class="nav-link" href="#">Customers</a></li>
+			<li class="nav-item active"><a class="nav-link" href="list_customer">Customers</a></li>
 			<li class="nav-item active"><a class="nav-link" href="#">Reviews</a></li>
 			<li class="nav-item active"><a class="nav-link" href="#">Orders</a></li>
 		</ul>

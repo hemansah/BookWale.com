@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <style type="text/css">
 .center_div {
 	margin: 0 auto;
-	width: 50%
+	width: 60%
 }
 </style>
 </head>
@@ -29,17 +30,17 @@
 
 						<c:if test="${book == null}">
 							Add New Book
-						</c:if>it
+						</c:if>
 					</h3>
 				</div>
 			</div>
 		</div>
 
 		<div class="row my-1" align="center">
-			<div class="col-12">
+			<div class="col-sm-12">
 				<c:if test="${book != null }">
-					<form action="update_book" method="post" id="userform">
-						<input type="hidden" name="categoryId" value="${category.categoryId }" />
+					<form action="update_book" method="post" id="bookform" enctype="multipart/form-data">
+						<input type="hidden" name="bookId" value="${book.bookId}" />
 				</c:if>
 				<c:if test="${book == null }">
 					<form action="create_book" method="post" id="bookform" enctype="multipart/form-data">
@@ -48,7 +49,12 @@
 					<select class="form-control" name="category" id="category">
 						
 						<c:forEach items="${listCategory}" var="category">
-							<option value="${category.categoryId}">
+							<c:if test="${category.categoryId eq book.category.categoryId }">
+								<option value="${category.categoryId}" selected="selected">
+							</c:if>
+							<c:if test="${category.categoryId ne book.category.categoryId }">
+								<option value="${category.categoryId}">
+							</c:if>
 								${category.name}
 							</option>
 						</c:forEach>
@@ -57,12 +63,20 @@
 					<input type="text" class="form-control my-2" name="title" id="title" value="${book.title}" placeholder="Enter title of the book"/>
 					<input type="text" class="form-control" name="author" id="author" value="${book.author }" placeholder="Enter Author name"/>
 					<input type="text" class="form-control my-2" name="isbn" id="isbn" value="${book.isbn}" placeholder="Enter ISBN"/>
-					<input type="text" class="form-control" name="publishDate" id="publishDate" value="${book.publishDate}" placeholder="Enter Publishing Date"/>
+					<input type="text" class="form-control" name="publishDate" id="publishDate" value="<fmt:formatDate pattern='mm/dd/yyyy' value='${book.publishDate}'/>" placeholder="Enter Publishing Date"/>
 					<input type="file" class="form-control my-2 form-control-file" name="bookImage" id="bookImage" value=""/>
-						<img alt="Image Preview" id="thumbnail" style="width: 80px"; height="100px;" />
-					<input type="text" class="form-control" name="price" id="price" value="${book.price}" placeholder="Enter Price"/>
-					<textarea type="text" class="form-control my-2" name="description" id="description" value="" placeholder="Write Description..."></textarea> 
-					<!-- <input type="" class="form-control my-2" name="" id="" value="" placeholder=""/> -->
+						<img alt="Image Preview" id="thumbnail" style="width: 80px"; height="100px;"
+							 src="data:image/jpg;base64,${book.base64Image}" 
+						 />
+					<input type="text" class="form-control my-2" name="price" id="price" value="${book.price}" placeholder="Enter Price"/>
+					</div>
+					
+					
+					<div class="col-sm-12">
+					<textarea type="text" class="form-control " name="description" id="description" value="" placeholder="Write Description...">${book.description}</textarea> 
+					
+					
+					
 					
 
 				</div>
@@ -77,6 +91,9 @@
 <script >
 $(document).ready(function(){
 	$('#publishDate').datepicker();
+	$('#description').richText();
+	
+	
 	$('#bookImage').change(function(){
 		showImageThumbnail(this);
 	});
@@ -87,7 +104,10 @@ $(document).ready(function(){
 			author : "required",
 			isbn : "required",
 			publishDate : "required",
+			
+			<c:if test="${book == null}">
 			bookImage : "required",
+			</c:if>
 			price : "required",
 			description : "required",
 		},

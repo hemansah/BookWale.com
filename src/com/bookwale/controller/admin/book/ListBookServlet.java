@@ -7,16 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bookwale.controller.BaseServlet;
+
 import com.bookwale.service.BookServices;
 
 @WebServlet("/admin/list_books")
-public class ListBookServlet extends BaseServlet {
+public class ListBookServlet extends HttpServlet  {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		BookServices bookServices = new  BookServices(entityManager,request, response);
+		BookServices bookServices = new  BookServices(request, response);
 		bookServices.listBooks();
 	}
 
