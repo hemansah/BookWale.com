@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Admin Login</title>
 <jsp:directive.include file="links.jsp" />
 <jsp:directive.include file="scripts.jsp" />
@@ -15,30 +16,38 @@
 </style>
 </head>
 <body>
-	<div class="container-fluid center_div">
-		<div class="row my-5" align="center">
-			<div class="col-10">
-				<h1>BookWale Administration</h1>
-				<h2>Admin Login here</h2>
-
-				<c:if test="${message!=null}">
-					<div class="row">
-						<div class="col-12 my-2" align="center">
-							<h3 class="text-danger bg-light">${message}</h3>
-						</div>
-					</div>
-				</c:if>
-				
-				<form action="login" method="post" id="loginform">
-					<input class="form-control my-4" type="text" id="email"
-						name="email" placeholder="Login id" /> <input class="form-control"
-						type="password" id="password" name="password"
-						placeholder="Password" /><br>
-					<button type="submit" class="btn btn-primary">Login</button>
-				</form>
+	<div class="d-flex h-100 my-5">
+		<div class="m-auto">
+			<div class="form-group">
+				<h3>BookWale Administration</h3>
 			</div>
+			<div class="form-group text-center">
+				<h3>Admin Login here</h3>
+			</div>
+			<c:if test="${message!=null}">
+
+				<div class="form-group">
+					<h3 class="text-danger bg-light">${message}</h3>
+				</div>
+			</c:if>
+
+			<form action="login" method="post" id="loginform"
+				class=" justify-content-center">
+				<div class="form-group">
+					<input class="form-control my-4" type="text" id="email"
+						name="email" placeholder="Login id" />
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="password" id="password"
+						name="password" placeholder="Password" /><br>
+				</div>
+				<div class="form-group text-center">
+					<button type="submit" class="btn btn-primary">Login</button>
+				</div>
+			</form>
 		</div>
 	</div>
+
 </body>
 
 <script type="text/javascript">
@@ -64,3 +73,4 @@
 	});
 </script>
 </html>
+

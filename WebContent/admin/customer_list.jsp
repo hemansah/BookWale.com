@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manage Customers - Bookwale Administration</title>
 <jsp:directive.include file="links.jsp" />
 <jsp:directive.include file="scripts.jsp" />

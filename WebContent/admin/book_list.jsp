@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Manage Books - Bookwale Administration</title>
 <jsp:directive.include file="links.jsp" />
 <jsp:directive.include file="scripts.jsp" />
@@ -32,8 +33,8 @@
 		
 		<div class="row">
 			<div class="col-10 my-5 offset-1">
-				<div class="table-responsive">
-				<table class="table ml-auto table-bordered">
+				<div class="table-responsive-sm">
+				<table class="table  table-bordered">
 					<thead class="text-center thead-dark">
 						<th>Index</th>
 						<th>ID</th>
