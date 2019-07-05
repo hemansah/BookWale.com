@@ -18,7 +18,7 @@
 	
 		<div class="row">
 			<div class="col-12 my-2" align="center">
-				<a href="new_customer"><button class="btn btn-secondary">Create New Customer</button></a>
+				<a href="customer_form.jsp"><button class="btn btn-secondary">Create New Customer</button></a>
 			</div>
 		</div>
 		
@@ -78,7 +78,7 @@
 			$(this).on("click",function(){
 				customerId = $(this).attr("id");
 				if(confirm('Are you sure you want to delete the customer with Id: '+customerId)){
-					window.location = 'delete_book?id=' + customerId;
+					window.location = 'delete_customer?id=' + customerId;
 				}
 			})
 		})

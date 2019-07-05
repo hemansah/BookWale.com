@@ -1,4 +1,4 @@
-package com.bookwale.controller.admin;
+package com.bookwale.controller.frontend;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -11,11 +11,12 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
-@WebFilter("/admin/*")
-public class AdminLoginFilter implements Filter {
+@WebFilter("/*")
+public class CustomerLoginFilter implements Filter {
 
-	public AdminLoginFilter() {
+	public CustomerLoginFilter() {
 
 	}
 
@@ -25,27 +26,27 @@ public class AdminLoginFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		
+
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		HttpSession session = httpServletRequest.getSession(false);
 
-		boolean loggedIn = session != null && session.getAttribute("useremail") != null;
-		String loginURI = httpServletRequest.getContextPath() + "/admin/login";
-		boolean loginRequest = httpServletRequest.getRequestURI().equals(loginURI);
-		boolean loginPage = httpServletRequest.getRequestURI().endsWith("login.jsp");
+		String  path = httpServletRequest.getRequestURI().substring(httpServletRequest.getContextPath().length());
 		
-		if(loggedIn && (loginRequest || loginPage)) {
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/admin/");
-			dispatcher.forward(request, response);
-			
-		} else	if (loggedIn || loginRequest) {
-			
+		if(path.startsWith("/admin/")) {
 			chain.doFilter(request, response);
-		} 
-		else {
+			return;
+		}
+		
+		boolean loggedIn = session != null && session.getAttribute("loggedCustomer") != null;
+		
+		if(!loggedIn && path.startsWith("/view_profile")) {
+			String loginPage = "frontend/login.jsp";
+			RequestDispatcher requestDispatcher = httpServletRequest.getRequestDispatcher("");
+			requestDispatcher.forward(request, response);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-			dispatcher.forward(request, response);
+		}else {
+			chain.doFilter(request, response);
 		}
 	}
 

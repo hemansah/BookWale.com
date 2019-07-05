@@ -1,4 +1,4 @@
-package com.bookwale.controller.frontend;
+package com.bookwale.controller.frontend.book;
 
 
 import com.bookwale.service.BookServices;

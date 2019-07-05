@@ -26,7 +26,7 @@
 	<div class="row my-4" style="margin-left: auto; margin-right: auto;" >
 
 		<c:forEach items="${listNewBooks}" var="book">
-			<div class="col-sm-2 my-3">
+			<div class="col-sm-2 my-3 mx-3">
 				<div class="card" style="width: 250px;">
 					<img class="card-img-top img-thumbnail"
 						src="data:image/jpg;base64,${book.base64Image}"
