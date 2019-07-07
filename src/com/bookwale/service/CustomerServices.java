@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bookwale.dao.CustomerDAO;
+import com.bookwale.dao.HashGenerator;
 import com.bookwale.entity.Customer;
 
 public class CustomerServices {
@@ -72,10 +73,19 @@ public class CustomerServices {
 		String  zipCode = request.getParameter("zipCode");
 		String country = request.getParameter("country");
 		
+		if(email != null && !email.equals("")) {
+			customer.setEmail(email);
+		}
 		
 		customer.setFullname(fullName);
-		customer.setEmail(email);
-		customer.setPassword(password);
+		
+		if(password != null && !password.equals("")) {
+			customer.setPassword(password);
+		}
+		
+		
+		
+		
 		customer.setPhone(phone);
 		customer.setAddress(address);
 		customer.setCity(city);
@@ -115,6 +125,19 @@ public class CustomerServices {
 		request.setAttribute("customer", customer);
 
 		String editPage = "customer_form.jsp";
+		
+		
+		if (customer == null) {
+			editPage = "message.jsp";
+			String errorMessage = "Could not find customer with ID " + customerId;
+			request.setAttribute("message", errorMessage);
+		} else {
+			// set password as null to make the password is left blank by default
+			// if left blank, the user's password won't be updated
+			// this is to work with the encrypted password feature
+			customer.setPassword(null);
+			request.setAttribute("customer", customer);			
+		}
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
 		requestDispatcher.forward(request, response);
 		
@@ -124,6 +147,7 @@ public class CustomerServices {
 	public void updateCustomer() throws ServletException, IOException {
 		Integer customerId = Integer.parseInt(request.getParameter("customerId"));
 		String email = request.getParameter("email");
+		String password = request.getParameter("password");
 		Customer customerByEmail = customerDAO.findByEmail(email);
 		String message;
 		
@@ -136,12 +160,16 @@ public class CustomerServices {
 			Customer customerById  = customerDAO.get(customerId);
 			updateCustomerFieldsFromForm(customerById);
 			
+			if (password != null & !password.isEmpty()) {
+				String encryptedPassword = HashGenerator.generateMD5(password);
+				customerById.setPassword(encryptedPassword);				
+			}
 			customerDAO.update(customerById);
 			
 			message = "The customer has been update successfully";
-			
+			listCustomers(message);
 		}
-		listCustomers(message);
+		
 		
 	}
 
@@ -184,5 +212,19 @@ public class CustomerServices {
 		String profilePage = "frontend/customer_profile.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(profilePage);
 		requestDispatcher.forward(request, response);
+	}
+
+	public void showCustomerProfileEditForm() throws ServletException, IOException {
+		String editPage = "frontend/edit_profile.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+		requestDispatcher.forward(request, response);		
+	}
+
+	public void updateCustomerProfile() throws ServletException, IOException {
+		Customer customer = (Customer) request.getSession().getAttribute("loggedCustomer");
+		
+		updateCustomerFieldsFromForm(customer);
+		customerDAO.update(customer);
+		showCustomerProfile();
 	}
 }

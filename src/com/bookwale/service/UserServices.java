@@ -122,7 +122,7 @@ public class UserServices {
 			
 			if (password != null & !password.isEmpty()) {
 				String encryptedPassword = HashGenerator.generateMD5(password);
-				userById.setPassword(encryptedPassword);				
+				userById.setPassword(encryptedPassword);
 			}
 			
 			userDAO.update(userById);

@@ -53,7 +53,7 @@
 		</c:if>
 		
 		<c:if test="${loggedCustomer != null }">
-			<a href="view_profile" class="mr-3">Welcome,${loggedCustomer.fullname}</a>
+			<a href="view_profile" class="mr-3">Hi, ${loggedCustomer.fullname}</a>
 			<a href="view_orders" class="mr-2">My orders</a>
 			<a href="logout"><button class="btn btn-outline-success ml-1">Logout</button></a>
 		</c:if>
