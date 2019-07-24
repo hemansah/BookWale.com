@@ -44,7 +44,7 @@
 			</div>
 		</form>
 		<ul class="navbar-nav mr-5">
-			<a class="nav-link" href="#">Cart</a>
+			<a class="nav-link" href="view_cart">Cart</a>
 		</ul>
 
 		<c:if test="${loggedCustomer == null }">

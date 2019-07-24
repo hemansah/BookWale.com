@@ -46,7 +46,9 @@
 								<b><c:out value="${book.title}"></c:out></b></br> <i>by <c:out
 										value="${book.author}"></c:out></i></br> <i class="fa fa-inr"></i>
 								<c:out value="${book.price}">
-								</c:out>
+								</c:out><br>
+								<!-- Book Rating here -->
+								<jsp:directive.include file="book_rating.jsp" />
 							</p>
 							<a href="view_book?id=${book.bookId}" class="stretched-link"></a>
 						</div>

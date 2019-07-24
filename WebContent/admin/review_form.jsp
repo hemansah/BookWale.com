@@ -25,17 +25,36 @@
 
 
 
-				<form action="update_review" method="post" id="reivewform">
+				<form action="update_review" method="post" id="reviewform" >
 					<div class="form-group table-responsive table-borderless">
-						<input type="hidden" name="reviewId"
-							value="${review.reviewId }" />
-							<p>Hello<c:out value="${review.reviewId}"></c:out> </p>
+						<input type="hidden" name="reviewId" value="${review.reviewId }" />
+
 					</div>
-			
 					
-						
+					<table class="table table-borderless">
+						<tr>
+							<td>Book : </td>
+							<td><input  class="form-control"  value="${review.book.title }" disabled="disabled" /> </td>
+						</tr>
+						<tr>
+							<td>Rating : </td>
+							<td><c:out value="${review.rating}"></c:out> </td>
+						</tr>
+						<tr>
+							<td>Customer : </td>
+							<td><input  class="form-control"  value="${review.customer.fullname }" disabled="disabled" /> </td>
+						</tr>
+						<tr>
+							<td>Comment : </td>
+							<td><textarea rows="5" cols="50" name="comment" class="form-control">${review.comment}</textarea> </td>
+						</tr>
+						<tr>
+							<td>Headline : </td>
+							<td><input  class="form-control"  name="headline" value="${review.headline }" /> </td>
+						</tr>
 					
-					
+					</table>
+
 					<div class="form-group text-center">
 						<input value="Save" class="btn btn-primary" type="submit" />
 						<button type="" class="btn btn-danger" id="buttonCancel">Cancel</button>
@@ -45,20 +64,22 @@
 
 			</div>
 		</div>
-		</div>
-		<!-- Container ends here -->
+	</div>
+	<!-- Container ends here -->
 </body>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$("#categoryform").validate({
+		$("#reviewform").validate({
 			rules : {
-				name : "required",
+				headline : "required",
+				comment : "required"
 
 			},
 
 			message : {
-				name : "Please enter the category name",
+				headline : "Please enter the headline",
+				comment : "Please enter the comment",
 			}
 		});
 		$("#buttonCancel").click(function() {

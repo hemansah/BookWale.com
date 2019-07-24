@@ -6,3 +6,4 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>	
 <script type="text/javascript" src="js/jquery-3.4.1.min.js"> </script> 
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>

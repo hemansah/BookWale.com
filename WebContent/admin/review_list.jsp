@@ -55,9 +55,8 @@
 									<td>${review.customer.fullname}</td>
 									<td>${review.reviewTime}</td>
 									<td><a href="edit_review?id=${review.reviewId}"><button
-												class="btn btn-outline-secondary">Edit</button></a> <a
-										href="javascript:void(0)" class="deleteLink"
-										id="${review.reviewId}"><button
+												class="btn btn-outline-secondary">Edit</button></a> 
+									<a href="javascript:void(0)" class="deleteLink" id="${review.reviewId}"><button
 												class="btn btn-outline-danger">Delete</button></a></td>
 								</tr>
 							</c:forEach>
@@ -71,28 +70,17 @@
 	<!-- Container ends here  -->
 </body>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$(".deleteLink")
-								.each(
-										function() {
-											$(this)
-													.on(
-															"click",
-															function() {
-																categoryId = $(
-																		this)
-																		.attr(
-																				"id");
-																if (confirm('Are you sure you want to delete the category with Id: '
-																		+ categoryId)) {
-																	window.location = 'delete_category?id='
-																			+ categoryId;
-																}
-															})
-										})
-					});
+
+	$(document).ready(function(){
+		$(".deleteLink").each(function(){
+			$(this).on("click",function(){
+				reviewId = $(this).attr("id");
+				if(confirm('Are you sure you want to delete the review with Id: '+reviewId)){
+					window.location = 'delete_review?id=' + reviewId;
+				}
+			})
+		})
+	});
 </script>
 <jsp:directive.include file="footer.jsp" />
 </html>
