@@ -19,7 +19,7 @@
 			<li class="nav-item active"><a class="nav-link" href="list_books">Books</a></li>
 			<li class="nav-item active"><a class="nav-link" href="list_customer">Customers</a></li>
 			<li class="nav-item active"><a class="nav-link" href="list_review">Reviews</a></li>
-			<li class="nav-item active"><a class="nav-link" href="#">Orders</a></li>
+			<li class="nav-item active"><a class="nav-link" href="list_order">Orders</a></li>
 		</ul>
 		<form class="mx-auto my-auto d-inline w-25">
 			<div class="input-group">

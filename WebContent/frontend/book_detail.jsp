@@ -44,7 +44,7 @@
 					<i class="fa fa-inr">&nbsp</i>
 					<c:out value="${book.price}"></c:out>
 				</h3>
-				<button class="btn btn-outline-warning my-3">Add to Cart</button>
+				<button class="btn btn-outline-warning my-3" id="buttonAddToCart">Add to Cart</button>
 			</div>
 		</div>
 
@@ -88,6 +88,10 @@
  		$(document).ready(function() {
  			$("#buttonWriteReview").click(function() {
  				window.location = 'write_review?book_id=' +${book.bookId}; 
+ 			});
+ 			
+ 			$("#buttonAddToCart").click(function() {
+ 				window.location = 'add_to_cart?book_id=' +${book.bookId}; 
  			});
  		});
 </script>

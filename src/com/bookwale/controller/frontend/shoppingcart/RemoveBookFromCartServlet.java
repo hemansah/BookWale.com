@@ -1,8 +1,6 @@
 package com.bookwale.controller.frontend.shoppingcart;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.bookwale.dao.BookDAO;
 import com.bookwale.entity.Book;
 
-@WebServlet("/view_cart")
-public class ViewCartServlet extends HttpServlet {
+@WebServlet("/remove_from_cart")
+public class RemoveBookFromCartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ViewCartServlet() {
+	public RemoveBookFromCartServlet() {
 		super();
 
 	}
@@ -24,19 +22,16 @@ public class ViewCartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			
+		Integer bookId = Integer.parseInt(request.getParameter("book_id"));
+		
 		Object cartObject = request.getSession().getAttribute("cart");
+		ShoppingCart shoppingCart  = (ShoppingCart) cartObject;
 		
-		if(cartObject == null) {
-			ShoppingCart shoppingCart = new ShoppingCart();
-			request.getSession().setAttribute("cart", shoppingCart);
-			
-		}
+		shoppingCart.removeItem(new Book(bookId));
 		
+		String cartPage = request.getContextPath().concat("/view_cart");
+		response.sendRedirect(cartPage);
 		
-		
-		String cartPage = "frontend/shopping_cart.jsp";
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(cartPage);
-		requestDispatcher.forward(request, response);
 	}
 
 }
