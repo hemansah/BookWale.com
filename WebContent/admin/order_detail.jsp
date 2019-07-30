@@ -109,6 +109,8 @@
 				</div>
 			</div>
 		</div>
+		<a href=""><button class="btn btn-primary">Edit this order</button></a>
+		<a href=""><button class="btn btn-primary">Delete this order</button></a>
 	</div>
 
 	<!-- Container ends here  -->

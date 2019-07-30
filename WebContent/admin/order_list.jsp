@@ -61,7 +61,7 @@
 									
 									
 									<td>
-									<a href="view_order?view_id=${order.orderId}"><button
+									<a href="view_order?id=${order.orderId}"><button
 												class="btn btn-outline-secondary">Details</button></a>
 									<a href="edit_review?id=${review.reviewId}"><button
 												class="btn btn-outline-secondary">Edit</button></a> 

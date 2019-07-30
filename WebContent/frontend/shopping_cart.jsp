@@ -89,8 +89,9 @@
 							<button type="submit" class="btn btn-outline-primary">Update</button>
 							<input type="button" class="btn btn-outline-info" value="Clear Cart" id="clearCart" />
 							
-							<a href=""><button class="btn btn-outline-success">Checkout</button> </a>						
-						</form>	
+													
+						</form>
+						<a href="checkout"><button class="btn btn-outline-success">Checkout</button> </a>	
 						<a href="${pageContext.request.contextPath}/"><button class="btn my-2 btn-outline-danger">Continue Shopping</button> </a>
 					</div>
 			</c:if>
