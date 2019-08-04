@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -16,6 +18,14 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "order_detail", catalog = "bookwale")
+@NamedQueries({
+	@NamedQuery(name = "OrderDetail.bestSelling", 
+			query = "SELECT od.book FROM OrderDetail od GROUP by od.book.bookId "
+					+ "ORDER BY SUM(od.quantity) DESC"),
+	@NamedQuery(name = "OrderDetail.countByBook",
+				query = "SELECT COUNT(*) FROM OrderDetail od WHERE od.book.bookId =:bookId")
+	
+})
 public class OrderDetail implements java.io.Serializable {
 
 	private OrderDetailId id = new OrderDetailId();
@@ -42,7 +52,7 @@ public class OrderDetail implements java.io.Serializable {
 	@EmbeddedId
 
 	@AttributeOverrides({ @AttributeOverride(name = "orderId", column = @Column(name = "order_id", nullable = false)),
-			@AttributeOverride(name = "bookId", column = @Column(name = "book_id")), })
+			@AttributeOverride(name = "bookId", column = @Column(name = "book_id", nullable = false))})
 	public OrderDetailId getId() {
 		return this.id;
 	}
@@ -51,7 +61,7 @@ public class OrderDetail implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "book_id", insertable = false, updatable = false,nullable = false)
 	public Book getBook() {
 		return this.book;
@@ -69,9 +79,10 @@ public class OrderDetail implements java.io.Serializable {
 
 	public void setBookOrder(BookOrder bookOrder) {
 		this.bookOrder = bookOrder;
+		this.id.setBookOrder(bookOrder);
 	}
 	
-	@Column(name = "quantity", nullable = false)
+	@Column(name = "quantity", nullable = false/* , insertable=false, updatable = false */)
 	public int getQuantity() {
 		return this.quantity;
 	}
@@ -80,7 +91,7 @@ public class OrderDetail implements java.io.Serializable {
 		this.quantity = quantity;
 	}
 
-	@Column(name = "subtotal", nullable = false, precision = 12, scale = 0)
+	@Column(name = "subtotal", nullable = false, precision = 12, scale = 0/* , insertable= false, updatable = false */)
 	public float getSubtotal() {
 		return this.subtotal;
 	}

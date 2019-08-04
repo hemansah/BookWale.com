@@ -33,9 +33,10 @@
 
 		<div class="row">
 			<div class="col-10 my-5 offset-1">
-				<div class="table-responsive-sm">
-					<table class="table">
-						<tr align="center">Order Overview</tr>
+				<div class="">
+					<h3 class="text-center">Order Overview</h3>
+					<table class="table table-bordered">
+						
 						<tr>
 							<td>Ordered By :</td>
 							<td> ${order.customer.fullname }</td>
@@ -46,11 +47,11 @@
 						</tr>
 						<tr>
 							<td>Total Amount</td>
-							<td>${order.total }</td>
+							<td><i class="fa fa-inr">&nbsp</i>${order.total }</td>
 						</tr>
 						<tr>
 							<td>Recipient Name</td>
-							<td>${order.RecipientName }</td>
+							<td>${order.recipientName }</td>
 						</tr>
 						
 						<tr>
@@ -77,7 +78,7 @@
 						
 					</table>
 					
-					<table class="table">
+					<table class="table table-bordered border-2">
 						<thead>
 							<th>Index</th>
 							<th>Book Title</th>
@@ -90,17 +91,18 @@
 						<c:forEach items="${order.orderDetails }" var="orderDetail" varStatus="status">						
 						<tbody>
 							<tr>
-								<td> ${status.index+1 }</td>
-								<td> ${orderDetail.book.title }</td>
-								<td> ${orderDetail.book.price }</td>
-								<td> ${orderDetail.quantity }</td>
-								<td> ${orderDetail.subtotal }</td>
+								<td>${status.index+1}</td>
+								<td>${orderDetail.book.title}</td>
+								<td>${orderDetail.book.author}</td>
+								<td><i class="fa fa-inr">&nbsp</i>${orderDetail.book.price}</td>
+								<td>${orderDetail.quantity}</td>
+								<td>${orderDetail.subtotal}</td>
 							</tr>
 							
 							<tr>
-								<td>Total : </td>
+								<td colspan="3" align="right">Total : </td>
 								<td>${order.bookCopies }</td>
-								<td> ${order.total }</td>
+								<td> <i class="fa fa-inr">&nbsp</i><b>${order.total }</b></td>
 							</tr>
 							
 						</tbody>

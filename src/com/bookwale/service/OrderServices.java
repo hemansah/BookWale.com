@@ -53,6 +53,7 @@ public class OrderServices {
 		public void viewOrderDetailForAdmin() throws ServletException, IOException {
 			Integer	orderId = Integer.parseInt(request.getParameter("id"));
 			
+			OrderDAO orderDAO = new OrderDAO(); 
 			BookOrder order = orderDAO.get(orderId);
 			request.setAttribute("order",order);
 			
@@ -105,6 +106,7 @@ public class OrderServices {
 				float subtotal = quantity * book.getPrice();
 				
 				OrderDetail orderDetail =  new OrderDetail();
+				
 				orderDetail.setBook(book);
 				orderDetail.setBookOrder(order);
 				orderDetail.setQuantity(quantity);
@@ -116,7 +118,7 @@ public class OrderServices {
 			
 			order.setOrderDetails(orderDetails);
 			order.setTotal(shoppingCart.getTotalAmount());
-			
+			OrderDAO orderDAO = new OrderDAO(); 
 			orderDAO.create(order);
 			
 			shoppingCart.clear();

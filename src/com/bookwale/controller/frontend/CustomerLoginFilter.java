@@ -17,7 +17,7 @@ import javax.websocket.Session;
 public class CustomerLoginFilter implements Filter {
 
 	private static  final String[] loginRequiredURLs = {
-			"/view_profile", "/edit_profile", "/update_profile"
+			"/view_profile", "/edit_profile", "/update_profile", "/write_review", "/checkout", "place_order"
 	};
 	
 	public CustomerLoginFilter() {

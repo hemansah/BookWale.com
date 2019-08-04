@@ -29,34 +29,17 @@ import javax.persistence.Transient;
 @Table(name = "book_order", catalog = "bookwale")
 @NamedQueries({
 	@NamedQuery(name = "BookOrder.findAll", query = "SELECT bo FROM BookOrder bo ORDER BY bo.orderDate DESC"),
-	@NamedQuery(name = "BookOrder.countAll",query = "SELECT COUNT(*) FROM BookOrder"),
+	@NamedQuery(name = "BookOrder.countAll", query = "SELECT COUNT(*) FROM BookOrder"),
+	@NamedQuery(name = "BookOrder.findByCustomer", 
+		query = "SELECT bo FROM BookOrder bo WHERE bo.customer.customerId =:customerId ORDER BY bo.orderDate DESC"),
+	@NamedQuery(name = "BookOrder.findByIdAndCustomer",
+			query = "SELECT bo FROM BookOrder bo WHERE bo.orderId =:orderId AND bo.customer.customerId =:customerId"),
+	@NamedQuery(name = "BookOrder.countByCustomer",
+			query = "SELECT COUNT(bo.orderId) FROM BookOrder bo WHERE bo.customer.customerId =:customerId")
 })
 public class BookOrder implements java.io.Serializable {
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		BookOrder other = (BookOrder) obj;
-		if (orderId == null) {
-			if (other.orderId != null)
-				return false;
-		} else if (!orderId.equals(other.orderId))
-			return false;
-		return true;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
-		return result;
-	}
+	
 
 	private Integer orderId;
 	private Customer customer;
@@ -202,5 +185,32 @@ public class BookOrder implements java.io.Serializable {
 		
 		return total;
 	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		return result;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BookOrder other = (BookOrder) obj;
+		if (orderId == null) {
+			if (other.orderId != null)
+				return false;
+		} else if (!orderId.equals(other.orderId))
+			return false;
+		return true;
+	}
+
+	
 
 }
