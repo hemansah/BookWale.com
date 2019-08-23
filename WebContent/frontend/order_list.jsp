@@ -1,4 +1,5 @@
-<%-- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/format" %> --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,7 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manage Orders - Bookwale Administration</title>
+<title>My Orders - Bookwale </title>
 <jsp:directive.include file="links.jsp" />
 <jsp:directive.include file="scripts.jsp" />
 </head>
@@ -18,19 +19,17 @@
 
 		<div class="row">
 			<div class="col-12 my-2" align="center">
-				<h3>Book Order Management</h3>
+				<h3>My Order History</h3>
 			</div>
 		</div>
-
-		<c:if test="${message!=null}">
-			<div class="row">
-				<div class="col-12 my-2" align="center">
-					<h3 class="text-success bg-light">${message}</h3>
-				</div>
-			</div>
+		
+		<c:if test="${fn:length(listOrders)==0 }">
+			<h3>You haven't placed any order.</h3>
 		</c:if>
+		
 
 
+	<c:if test="${fn:length(listOrders) > 0 }">
 		<div class="row">
 			<div class="col-10 my-5 offset-1">
 				<div class="table-responsive-sm">
@@ -38,12 +37,10 @@
 						<thead class="text-center thead-dark">
 							<th>Index</th>
 							<th>Order ID</th>
-							<th>Ordered By</th>
-							<th>Book Copies</th>
-							<th>Total</th>
-							<th>Payment Method</th>
-							<th>Status</th>
+							<th>Quantity</th>
+							<th>Total Amount</th>
 							<th>Order Date</th>
+							<th>Status</th>
 							<th>Actions</th>
 						</thead>
 
@@ -52,21 +49,16 @@
 								<tr>
 									<td>${status.index + 1}</td>
 									<td>${order.orderId}</td>
-									<td>${order.customer.fullname}</td>
 									<td>${order.bookCopies} </td>
 									<td>${order.total}</td>
-									<td>${order.paymentMethod}</td>
-									<td>${order.status}</td>
 									<td>${order.orderDate}</td>
+									<td>${order.status}</td>
 									
 									
 									<td>
-									<a href="view_order?id=${order.orderId}"><button
-												class="btn btn-outline-secondary">Details</button></a>
-									<a href="edit_order?id=${order.orderId}"><button
-												class="btn btn-outline-secondary">Edit</button></a> 
-									<a href="javascript:void(0)" class="deleteLink" id="${order.orderId}"><button
-												class="btn btn-outline-danger">Delete</button></a></td>
+									<a href="show_order_detail?id=${order.orderId}"><button
+												class="btn btn-outline-secondary">View Details</button></a>
+									
 								</tr> 
 							</c:forEach>
 						</tbody>
@@ -74,6 +66,7 @@
 				</div>
 			</div>
 		</div>
+		</c:if>
 	</div>
 
 	<!-- Container ends here  -->
@@ -83,9 +76,9 @@
 	$(document).ready(function(){
 		$(".deleteLink").each(function(){
 			$(this).on("click",function(){
-				orderId = $(this).attr("id");
-				if(confirm('Are you sure you want to delete the order with Id: '+ orderId + '?')){
-					window.location = 'delete_order?id=' + orderId;
+				reviewId = $(this).attr("id");
+				if(confirm('Are you sure you want to delete the review with Id: '+reviewId)){
+					window.location = 'delete_review?id=' + reviewId;
 				}
 			})
 		})

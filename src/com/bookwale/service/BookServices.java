@@ -66,7 +66,7 @@ public class BookServices {
 
 	public void createBook() throws ServletException, IOException {
 		String title = request.getParameter("title");
-		
+		//BookDAO bookDAO = new BookDAO();
 		Book existBook = bookDAO.findByTitle(title);
 		
 		if(existBook != null) {
@@ -93,8 +93,7 @@ public class BookServices {
 		String title = request.getParameter("title");
 		String author= request.getParameter("author");
 		String price1 = request.getParameter("price");
-		price1 = price1.trim();
-		float price =  Float.parseFloat(price1);
+		float price =  Float.parseFloat(price1.trim());
 		String description = request.getParameter("description");
 		String isbn = request.getParameter("isbn");
 		

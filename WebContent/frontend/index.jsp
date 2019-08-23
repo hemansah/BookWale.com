@@ -26,26 +26,36 @@
 	<div class="row my-4" style="margin-left: auto; margin-right: auto;" >
 
 		<c:forEach items="${listNewBooks}" var="book">
-			<div class="col-sm-2 my-3 mx-3">
-				<div class="card" style="width: 250px;">
-					<img class="card-img-top img-thumbnail"
-						src="data:image/jpg;base64,${book.base64Image}"
-						style="width: 100%; height: 210px;" />
-					<div class="card-body">
-						<p class="card-text"
-							style="width: 160px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-							<b><c:out value="${book.title}"></c:out></b></br> 
-							<i>by <c:out value="${book.author}"></c:out></i></br>
-							<i class="fa fa-inr"></i><c:out value="${book.price}"></c:out></br>
-							<!--Book Rating Here  -->
-							<jsp:directive.include file="book_rating.jsp" />
-						</p>
-						<a href="view_book?id=${book.bookId}" class="stretched-link"></a>
-					</div>
-				</div>
-			</div>
+			<jsp:directive.include file="book_group.jsp" />
        </c:forEach>
      </div>
+     
+     <div class="row my-3 ">
+		<div class="col-12">
+			<h3 class="new-books"><span> Best Selling Books</span></h3>
+		</div>
+	</div>
+
+	<div class="row my-4" style="margin-left: auto; margin-right: auto;" >
+
+		<c:forEach items="${listBestSellingBooks}" var="book">
+		<jsp:directive.include file="book_group.jsp" />
+       </c:forEach>
+     </div>
+     
+      <div class="row my-3 ">
+		<div class="col-12">
+			<h3 class="new-books"><span> Most Favored Books</span></h3>
+		</div>
+	</div>
+
+	<div class="row my-4" style="margin-left: auto; margin-right: auto;" >
+
+		<c:forEach items="${listFavoredBooks}" var="book">
+		<jsp:directive.include file="book_group.jsp" />
+       </c:forEach>
+     </div>
+     
 </div>
 </body>
 <jsp:directive.include file="footer.jsp" />

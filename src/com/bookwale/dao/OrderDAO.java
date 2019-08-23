@@ -1,9 +1,13 @@
 package com.bookwale.dao;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.bookwale.entity.Book;
 import com.bookwale.entity.BookOrder;
+import com.bookwale.entity.Customer;
 
 public class OrderDAO extends JpaDAO<BookOrder> implements GenericDAO<BookOrder> {
 
@@ -24,6 +28,20 @@ public class OrderDAO extends JpaDAO<BookOrder> implements GenericDAO<BookOrder>
 		return super.find(BookOrder.class, orderId);
 	}
 
+
+	public BookOrder get(Object orderId,Integer customerId) {
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("orderId", orderId);
+		parameters.put("customerId", customerId);
+		List<BookOrder> result =  super.findWithNamedQuery("BookOrder.findByIdAndCustome",parameters);
+		if(result.isEmpty())
+		{
+			return result.get(0);
+		}
+		
+		return null;
+	}
+	
 	@Override
 	public void delete(Object orderId) {
 		super.delete(BookOrder.class, orderId);
@@ -39,5 +57,16 @@ public class OrderDAO extends JpaDAO<BookOrder> implements GenericDAO<BookOrder>
 	public long count() {
 		return super.countWithNamedQuery("BookOrder.countAll");
 	}
+	public List<BookOrder> listByCustomer(Integer customerId) {
+		
+		return super.findWithNamedQuery("BookOrder.findByCustomer", "customerId", customerId );
+		
+	}
+	
+	public List<BookOrder> listMostRecentSales() {
+		return super.findWithNamedQuery("BookOrder.findAll",0,3);
+	}
+	
+	
 
 }

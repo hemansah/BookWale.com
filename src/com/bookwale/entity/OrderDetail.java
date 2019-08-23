@@ -69,6 +69,7 @@ public class OrderDetail implements java.io.Serializable {
 
 	public void setBook(Book book) {
 		this.book = book;
+		this.id.setBook(book);
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)

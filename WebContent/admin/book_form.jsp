@@ -66,19 +66,29 @@
 				<div class="form-group">
 					<input type="text" class="form-control my-2" name="title"
 						id="title" value="${book.title}"
-						placeholder="Enter title of the book" /> <input type="text"
+						placeholder="Enter title of the book" /> 
+						
+						<input type="text"
 						class="form-control" name="author" id="author"
-						value="${book.author }" placeholder="Enter Author name" /> <input
+						value="${book.author }" placeholder="Enter Author name" /> 
+						
+						<input
 						type="text" class="form-control my-2" name="isbn" id="isbn"
-						value="${book.isbn}" placeholder="Enter ISBN" /> <input
+						value="${book.isbn}" placeholder="Enter ISBN" /> 
+						
+						<input
 						type="text" class="form-control" name="publishDate"
 						id="publishDate"
 						value="<fmt:formatDate pattern='mm/dd/yyyy' value='${book.publishDate}'/>"
-						placeholder="Enter Publishing Date" /> <input type="file"
+						placeholder="Enter Publishing Date" /> 
+						
+						<input type="file"
 						class="form-control my-2 form-control-file" name="bookImage"
 						id="bookImage" value="" /> <img alt="Image Preview"
 						id="thumbnail" style="width: 80px" ; height="100px;"
-						src="data:image/jpg;base64,${book.base64Image}" /> <input
+						src="data:image/jpg;base64,${book.base64Image}" /> 
+						
+						<input
 						type="text" class="form-control my-2" name="price" id="price"
 						value="${book.price}" placeholder="Enter Price" />
 
