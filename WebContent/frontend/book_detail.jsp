@@ -17,7 +17,7 @@
 
 	<div class="container-fluid">
 
-		<div class="row my-2">
+		<div class="row my-3">
 			<div class="col-sm-4 mx-5">
 				<h3>
 					<c:out value="${book.title}"></c:out>
@@ -25,6 +25,8 @@
 				<p>by ${book.author}</p>
 			</div>
 		</div>
+		
+		<hr>
 
 		<div class="row my-4">
 			<div class="col-sm-4 mx-5">
@@ -47,6 +49,8 @@
 				<button class="btn btn-outline-warning my-3" id="buttonAddToCart">Add to Cart</button>
 			</div>
 		</div>
+		
+		<hr>
 
 		<div class="row">
 			<div class="col-sm-10 offset-1" style="display: inline-block;">

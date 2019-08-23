@@ -26,19 +26,18 @@
 				</div>
 			</div>
 		</div>
-
-
-	</div>
-	</div>
-	<!-- Container ends here  -->
-
-	<div class="d-flex h-100 my-5">
-		<div class="m-auto">
-			<div class="form-group">
+		
+		<div class="row">
+		
+		</div>
+		
+		
+		<div class="form-group text-center my-3">
 				<h3>Recent Sales</h3>
 			</div>	
-				<table class="table">
-					<thead>
+				<div class="table-responsive-sm">
+				<table class="table table-bordered">
+					<thead class="thead-dark">
 						<th>Order ID</th>
 						<th>Ordered By</th>
 						<th>Book Copies</th>
@@ -68,13 +67,14 @@
 				
 				
 				</table>
+				</div>
 				
-				
-				<div class="form-group">
+				<div class="row">
+				<div class="form-group text-center my-3">
 					<h3>Recent Reviews</h3>
 				</div>	
-				<table class="table">
-					<thead>
+				<table class="table table-bordered table-responsive-sm">
+					<thead class="thead-dark">
 						<th>Book</th>
 						<th>Rating</th>
 						<th>Headline</th>
@@ -98,18 +98,40 @@
 						</tbody>
 					</c:forEach>
 				</table>
+				</div>
 				
-				<div class="form-group">
+				
+				<div class="row">
+					<div class="col-sm-3 offset-3">
+					<table class="table table-responsive-sm table-borderless">
+					<thead class="thead-dark">
+					<th>Statistics</th>
+					</thead>
+					
+					<tr><td align="center">Total Users : ${totalUsers}</td> </tr>
+					<tr><td align="center">Total Books : ${totalBooks}</td> </tr>
+					<tr><td align="center">Total Customers :${totalCustomers}</td> </tr>
+					<tr><td align="center">Total Reviews : ${totalReviews}</td> </tr>
+					<tr><td align="center">Total Orders : ${totalOrders}</td> </tr>
+					
+					</table>
+					</div>
+				</div>
+				
+				<%-- <div class="form-group">
 					<h3>Statistics</h3>
 					 Total Users : ${totalUsers} &nbsp;&nbsp;&nbsp;&nbsp;
 					 Total Books : ${totalBooks}&nbsp;&nbsp;&nbsp;&nbsp;
 					 Total Customers :${totalCustomers} &nbsp;&nbsp;&nbsp;&nbsp;
 					 Total Reviews : ${totalReviews} &nbsp;&nbsp;&nbsp;&nbsp;
 					 Total Orders : ${totalOrders} &nbsp;&nbsp;&nbsp;&nbsp;
-				</div>	
-			
-		</div>
+				</div>	 --%>
+
+
 	</div>
+	</div>
+	<!-- Container ends here  -->
+
 </body>
 <jsp:directive.include file="footer.jsp" />
 </html>

@@ -1,4 +1,5 @@
-<div class="col-sm-2 my-3 mx-3">
+<div class="col-sm-2 my-3 mx-3 mx-auto">
+<div class="text-center">
 	<div class="card" style="width: 250px;">
 		<img class="card-img-top img-thumbnail"
 			src="data:image/jpg;base64,${book.base64Image}"
@@ -16,4 +17,5 @@
 			<a href="view_book?id=${book.bookId}" class="stretched-link"></a>
 		</div>
 	</div>
+</div>
 </div>

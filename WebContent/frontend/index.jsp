@@ -14,49 +14,76 @@
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
-	
+
 	<div class="container-fluid">
-	
-	<div class="row my-3 ">
-		<div class="col-12">
-			<h3 class="new-books"><span> New Books</span></h3>
+
+		<div class="row my-3 ">
+			<div class="col-12">
+				<h3 class="new-books form-group text-center fancy">
+					<span> New Books</span>
+				</h3>
+			</div>
 		</div>
+
+
+		<div class="row my-4">
+
+			<c:forEach items="${listNewBooks}" var="book">
+				<jsp:directive.include file="book_group.jsp" />
+			</c:forEach>
+		</div>
+
+		<div class="row my-3 ">
+			<div class="col-12">
+				<h3 class="new-books form-group text-center fancy">
+					<span> Best Selling Books</span>
+				</h3>
+			</div>
+		</div>
+
+		
+		<div class="row my-4">
+
+			<c:forEach items="${listBestSellingBooks}" var="book">
+				<jsp:directive.include file="book_group.jsp" />
+			</c:forEach>
+		</div>
+		
+
+		<div class="row my-3 ">
+			<div class="col-12">
+				<h3 class="new-books form-group text-center fancy">
+					<span> Most Favored Books</span>
+				</h3>
+			</div>
+		</div>
+		
+
+		<div class="row my-4"">
+
+			<c:forEach items="${listFavoredBooks}" var="book">
+				<jsp:directive.include file="book_group.jsp" />
+			</c:forEach>
+		</div>
+
 	</div>
 
-	<div class="row my-4" style="margin-left: auto; margin-right: auto;" >
+	<%-- <div class="d-flex h-100 my-5">
+		<div class="m-auto">
 
-		<c:forEach items="${listNewBooks}" var="book">
-			<jsp:directive.include file="book_group.jsp" />
-       </c:forEach>
-     </div>
-     
-     <div class="row my-3 ">
-		<div class="col-12">
-			<h3 class="new-books"><span> Best Selling Books</span></h3>
+			<div class="form-group text-center">
+				<h3 class="new-books">
+					<span> New Books</span>
+				</h3>
+				<c:forEach items="${listNewBooks}" var="book">
+				<jsp:directive.include file="book_group.jsp" />
+			</c:forEach>
+				
+			</div>
+			
+			
 		</div>
-	</div>
-
-	<div class="row my-4" style="margin-left: auto; margin-right: auto;" >
-
-		<c:forEach items="${listBestSellingBooks}" var="book">
-		<jsp:directive.include file="book_group.jsp" />
-       </c:forEach>
-     </div>
-     
-      <div class="row my-3 ">
-		<div class="col-12">
-			<h3 class="new-books"><span> Most Favored Books</span></h3>
-		</div>
-	</div>
-
-	<div class="row my-4" style="margin-left: auto; margin-right: auto;" >
-
-		<c:forEach items="${listFavoredBooks}" var="book">
-		<jsp:directive.include file="book_group.jsp" />
-       </c:forEach>
-     </div>
-     
-</div>
+	</div> --%>
 </body>
 <jsp:directive.include file="footer.jsp" />
 </html>

@@ -1,9 +1,9 @@
 @charset "ISO-8859-1";
 
-.title-header {
+/* .title-header {
 	font-size: 25px;
 	font-weight: 500;
-}
+} */
 
 #navbar {
 	background-color: #f3f9fb;
@@ -26,14 +26,46 @@
 }
 
 .category-name {
-	font-family: 'Russo One', sans-serif;
+	/* font-family: 'Signika', sans-serif; */
 	font-size: 30px;
 }
 
 .new-books {
-	font-family: 'Russo One', sans-serif;
+	font-family: 'Concert One', cursive;
 	font-size: 30px;
 	padding-left: 0px;
 	box-sizing: 100px;
-	text-shadow: 2px 2px 2px #f83a3a;
+	/* text-shadow: 2px 2px 2px #f83a3a; */
+}
+
+.fancy {
+  line-height: 0.5;
+  text-align: center;
+}
+.fancy span {
+  display: inline-block;
+  position: relative;  
+}
+.fancy span:before,
+.fancy span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 2px solid black;
+  /* border-top: 1px solid black; */
+  top: 0;
+  width: 600px;
+}
+.fancy span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.fancy span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+
+.all-header {
+	font-family: 'Signika', sans-serif;
 }
