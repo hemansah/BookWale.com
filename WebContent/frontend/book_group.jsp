@@ -1,9 +1,9 @@
 <div class="col-sm-2 my-3 mx-3 mx-auto">
-<div class="text-center">
-	<div class="card" style="width: 250px;">
+<!-- <div class="text-center"> -->
+	<div class="card" style="width: auto; height: auto;">
 		<img class="card-img-top img-thumbnail"
 			src="data:image/jpg;base64,${book.base64Image}"
-			style="width: 100%; height: 210px;" />
+			style="width: auto; height: 300px;" />
 		<div class="card-body">
 			<p class="card-text"
 				style="width: 160px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -17,5 +17,5 @@
 			<a href="view_book?id=${book.bookId}" class="stretched-link"></a>
 		</div>
 	</div>
-</div>
+<!-- </div> -->
 </div>

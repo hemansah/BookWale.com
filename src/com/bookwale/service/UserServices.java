@@ -135,9 +135,9 @@ public class UserServices {
 
 
 	public void deleteUser() throws ServletException, IOException {
-int userId = Integer.parseInt(request.getParameter("id"));
+			int userId = Integer.parseInt(request.getParameter("id"));
 		
-		String message = "User has been deleted successfully";
+			String message = "User has been deleted successfully";
 		
 		if (userId == 1) {
 			message = "The default admin user account cannot be deleted.";

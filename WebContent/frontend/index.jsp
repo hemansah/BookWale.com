@@ -68,22 +68,7 @@
 
 	</div>
 
-	<%-- <div class="d-flex h-100 my-5">
-		<div class="m-auto">
-
-			<div class="form-group text-center">
-				<h3 class="new-books">
-					<span> New Books</span>
-				</h3>
-				<c:forEach items="${listNewBooks}" var="book">
-				<jsp:directive.include file="book_group.jsp" />
-			</c:forEach>
-				
-			</div>
-			
-			
-		</div>
-	</div> --%>
+	
 </body>
 <jsp:directive.include file="footer.jsp" />
 </html>
