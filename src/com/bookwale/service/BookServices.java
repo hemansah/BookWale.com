@@ -92,8 +92,8 @@ public class BookServices {
 		
 		String title = request.getParameter("title");
 		String author= request.getParameter("author");
-		String price1 = request.getParameter("price");
-		float price =  Float.parseFloat(price1.trim());
+//		String price1 = ;
+		float price =  Float.parseFloat(request.getParameter("price"));
 		String description = request.getParameter("description");
 		String isbn = request.getParameter("isbn");
 		

@@ -13,10 +13,17 @@
 
 </head>
 <body>
-	<jsp:directive.include file="header.jsp" />
+	
 
 	<div class="container-fluid">
-
+		<jsp:directive.include file="header.jsp" />
+		
+		<div class="row">
+			<div class="col-12 fancy">
+				<hr style="width: 100%; display: block; border-width: 2px; background-color: black; color: black;">
+			</div>
+		</div>
+		
 		<div class="row my-3 ">
 			<div class="col-12">
 				<h3 class="new-books form-group text-center fancy">
@@ -32,6 +39,12 @@
 				<jsp:directive.include file="book_group.jsp" />
 			</c:forEach>
 		</div>
+		
+		<div class="row">
+			<div class="col-12 fancy">
+				<hr style="width: 100%; display: block; border-width: 2px; background-color: black; color: black;">
+			</div>
+		</div>
 
 		<div class="row my-3 ">
 			<div class="col-12">
@@ -39,7 +52,7 @@
 					<span> Best Selling Books</span>
 				</h3>
 			</div>
-		</div>
+		</div> 
 
 		
 		<div class="row my-4">
@@ -49,6 +62,11 @@
 			</c:forEach>
 		</div>
 		
+		<div class="row">
+			<div class="col-12 fancy">
+				<hr style="width: 100%; display: block; border-width: 2px; background-color: black; color: black;">
+			</div>
+		</div>
 
 		<div class="row my-3 ">
 			<div class="col-12">
@@ -56,17 +74,23 @@
 					<span> Most Favored Books</span>
 				</h3>
 			</div>
-		</div>
+		</div> 
 		
-
+		
 		<div class="row my-4"">
-
 			<c:forEach items="${listFavoredBooks}" var="book">
 				<jsp:directive.include file="book_group.jsp" />
 			</c:forEach>
 		</div>
+		
+		<div class="row">
+			<div class="col-12 fancy">
+				<hr style="width: 100%; display: block; border-width: 2px; background-color: black; color: black;">
+			</div>
+		</div>
 
 	</div>
+	
 
 	
 </body>

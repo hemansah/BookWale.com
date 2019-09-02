@@ -9,6 +9,7 @@ import javax.persistence.*;
 	@NamedQuery(name = "Users.countAll", query = "SELECT Count(*) FROM Users u"),
 	@NamedQuery(name = "Users.checkLogin", query = "SELECT u FROM Users u WHERE u.email = :email AND password = :password")
 })
+@Table(name="users", catalog = "bookwale")
 public class Users {
 	private Integer userId;
 	private String email;

@@ -6,11 +6,11 @@
 } */
 
 #navbar {
-	background-color: #f3f9fb;
+	background-color: #fff;
 }
 
 #navbarDropdown {
-	background-color: #eaf5ff;
+	background-color: #fff;
 }
 
 .error {
@@ -38,7 +38,7 @@
 	/* text-shadow: 2px 2px 2px #f83a3a; */
 }
 
-.fancy {
+./* fancy {
   line-height: 0.5;
   text-align: center;
 }
@@ -52,7 +52,7 @@
   position: absolute;
   height: 5px;
   border-bottom: 2px solid black;
-  /* border-top: 1px solid black; */
+  border-top: 1px solid black;
   top: 0;
   width: 600px;
 }
@@ -69,3 +69,4 @@
 .all-header {
 	font-family: 'Signika', sans-serif;
 }
+ */

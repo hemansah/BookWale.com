@@ -7,11 +7,15 @@
 
 <persistence-unit name="bookwale">
 <properties>
-<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bookwale"/>
-<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://node43174-bookwale.cloud.cms500.com/bookwale"/> -->
+<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bookwale"/> -->
+
+
 <property name="javax.persistence.jdbc.user" value="root"/>
-<!-- <property name="javax.persistence.jdbc.password" value="UezVDIvbIN"/> -->
-<property name="javax.persistence.jdbc.password" value="Heman@159"/>
+
+<property name="javax.persistence.jdbc.url" value="jdbc:mysql://node43174-bookwale.cloud.cms500.com/bookwale"/>
+<property name="javax.persistence.jdbc.password" value="UezVDIvbIN"/>
+
+<!-- <property name="javax.persistence.jdbc.password" value="Heman@159"/> -->
 <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 <property name="hibernate.show_sql" value="true"/>
 <property name="hibernate.format_sql" value="true"/>
